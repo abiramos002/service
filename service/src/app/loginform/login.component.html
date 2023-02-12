@@ -1,0 +1,223 @@
+<div class="container">
+
+    <div class="row" *ngIf="show == false">
+
+      <div class="col-md-3" >
+          <button [ngStyle]="{'width': '45%'}" type="button" class="btn btn-default" (click)="getStudentsByDepartment('ct')">CT</button>
+          <button [ngStyle]="{'width': '45%','margin-left': '5%'}" type="button" class="btn btn-default" (click)="getStudentsByDepartment('ec')">EC</button>
+      </div>
+
+      <div class="col-md-8"></div>
+
+      <div class="col-md-1" style="    display: flex;
+      justify-content: center;"><img src="https://img.icons8.com/cute-clipart/64/000000/plus.png" style="height: 35px; width: 35px; cursor: pointer;" (click)="add()" data-toggle="modal" data-target="#exampleModalCenter"></div>
+
+    </div>
+
+    <div [ngStyle]="{'margin-top': '20px'}">
+
+    </div>
+
+
+
+  <div class="row" *ngIf="show == false">
+
+
+
+
+    <div class="[ col-xs-12 col-sm-offset-2 col-sm-12 ]">
+      <ul [ngClass]="{'event-list': true}">
+        <li [ngStyle]="{'background-color':'#736f6f'}" (click)="addStudent()">
+          <div class="row" [ngStyle]="{'height':'100%','color':'white'}" >
+              <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                  <div class="row" [ngStyle]="{'width':'100%'}">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7"><b>Name</b></div>
+                  </div>
+                </div>
+                <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                    <div class="row" [ngStyle]="{'width':'100%'}">
+                      <div class="col-md-5"></div>
+                      <div class="col-md-7"><b>Image</b></div>
+                    </div>
+                  </div>
+                  <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                      <div class="row" [ngStyle]="{'width':'100%'}">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-7"><b>R.No</b></div>
+                      </div>
+                    </div>
+            <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                <div class="row" [ngStyle]="{'width':'100%'}">
+                  <div class="col-md-5"></div>
+                  <div class="col-md-7"><b>Dob</b></div>
+                </div>
+              </div>
+              <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                  <div class="row" [ngStyle]="{'width':'100%'}">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7"><b>Mark</b></div>
+                  </div>
+                </div>
+                <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                    <div class="row" [ngStyle]="{'width':'100%'}">
+                      <div class="col-md-5"></div>
+                      <div class="col-md-7"><b>Result</b></div>
+                    </div>
+                  </div>
+          </div>
+        </li>
+
+        <ng-container *ngFor="let student of this._studentService.students">
+        <li app-highlight (click)="getDetail(student)" *ngIf="student.department == department || department == ''">
+
+            <div class="row" [ngStyle]="{'height': '100%','cursor':'pointer'}" [style.color]="student.mark > 50 ? (student.mark == 100 ? 'green':'black') :'red'" >
+                <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                  <div class="row" [ngStyle]="{'width':'100%'}">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">{{student.name}}</div>
+                  </div>
+                </div>
+                <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                    <div class="row" [ngStyle]="{'width':'100%'}">
+                      <div class="col-md-5"></div>
+                      <div class="col-md-7"><img [src]="student.image" [ngStyle]="{'height': '100%',  'width': '83%'}"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                      <div class="row" [ngStyle]="{'width':'100%'}">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">{{student.id}}</div>
+                      </div>
+                    </div>
+                    <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                        <div class="row" [ngStyle]="{'width':'100%'}">
+                          <div class="col-md-3"></div>
+                          <div class="col-md-9">{{student.dob | date}}</div>
+                        </div>
+                      </div>
+                      <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                          <div class="row" [ngStyle]="{'width':'100%'}">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">{{student.mark}}</div>
+                          </div>
+                        </div>
+                        <div class="col-md-2" [ngClass]="{'center_align1':true}">
+                            <div class="row" [ngStyle]="{'width':'100%'}">
+                              <div class="col-md-6"></div>
+                              <div class="col-md-6"><img src="assets/images/Delete.png" style="width: 25px; height: 25px" (click)="deleteStudent(student.id)"></div>
+                            </div>
+                          </div>
+              </div>
+          
+        </li>
+      </ng-container>
+
+        
+
+        <!-- <li [style.background-color]="color2" (click)="changeColor(student2.id)">
+
+            <div class="row" style="height: 100%; color: black" >
+                <div class="col-md-3 center_align1">
+                  <div class="row" style="width: 100%">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">{{student2.name}}</div>
+                  </div>
+                </div>
+                <div class="col-md-3 center_align1">
+                    <div class="row" style="width: 100%">
+                      <div class="col-md-5"></div>
+                      <div class="col-md-7"><img [src]="student2.image" style="height: 100%;
+                        width: 46%;"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 center_align1">
+                      <div class="row" style="width: 100%">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">{{student2.id}}</div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 center_align1">
+                        <div class="row" style="width: 100%">
+                          <div class="col-md-6"></div>
+                          <div class="col-md-6">{{student2.mark}}</div>
+                        </div>
+                      </div>
+              </div>
+          
+        </li> -->
+
+        <!-- <li [style.background-color]="color3" (click)="changeColor(student3.id)">
+
+            <div class="row" style="height: 100%; color: black" >
+                <div class="col-md-3 center_align1">
+                  <div class="row" style="width: 100%">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">{{student3.name}}</div>
+                  </div>
+                </div>
+                <div class="col-md-3 center_align1">
+                    <div class="row" style="width: 100%">
+                      <div class="col-md-5"></div>
+                      <div class="col-md-7"><img [src]="student3.image" style="height: 100%;
+                        width: 46%;"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 center_align1">
+                      <div class="row" style="width: 100%">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">{{student3.id}}</div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 center_align1">
+                        <div class="row" style="width: 100%">
+                          <div class="col-md-6"></div>
+                          <div class="col-md-6">{{student3.mark}}</div>
+                        </div>
+                      </div>
+              </div>
+          
+        </li> -->
+
+        <!-- <li [style.background-color]="color4" (click)="changeColor(student4.id)">
+
+            <div class="row" style="height: 100%; color: black" >
+                <div class="col-md-3 center_align1">
+                  <div class="row" style="width: 100%">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">{{student4.name}}</div>
+                  </div>
+                </div>
+                <div class="col-md-3 center_align1">
+                    <div class="row" style="width: 100%">
+                      <div class="col-md-5"></div>
+                      <div class="col-md-7"><img [src]="student4.image" style="height: 100%;
+                        width: 46%;"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 center_align1">
+                      <div class="row" style="width: 100%">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">{{student4.id}}</div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 center_align1">
+                        <div class="row" style="width: 100%">
+                          <div class="col-md-6"></div>
+                          <div class="col-md-6">{{student4.mark}}</div>
+                        </div>
+                      </div>
+              </div>
+          
+        </li> -->
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="show == true">
+    <app-profile [student]='student' (back)="show=$event"></app-profile>
+  </div>
+
+  <app-add-student></app-add-student>
+
+
+</div>

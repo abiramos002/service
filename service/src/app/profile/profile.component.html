@@ -1,0 +1,63 @@
+<div class="container">
+	<div class="row">
+    <div class="col-lg-3"></div>
+		<div class="col-lg-6 col-sm-6">
+
+            <div class="card hovercard">
+                <div class="cardheader">
+
+                </div>
+                <div class="avatar">
+                    <img alt="" [src]="student.image">
+                </div>
+                <div class="info " style="
+                height: 200px;
+                margin-top: 10px;
+            ">
+                    <div class="title">
+                        <a target="_blank" href="https://scripteden.com/">{{student.name}}</a>
+                    </div>
+                    
+
+                    <div class="desc row">
+                        <div class="col-md-4"><div style="color: #ff7600">Dob :</div> {{student.dob | date: 'dd/MM/yyyy'}}</div>
+                        <div class="col-md-4"><div style="color: #ff7600">Dept :</div> {{student.department | departmentpipe}}</div>
+                        <div class="col-md-4"><div style="color: #ff7600">Reg.No :</div> {{student.id}}</div>
+                    </div>
+                    
+                </div>
+                <div class="bottom row">
+                    <div class="col-md-4" style="display: flex;
+                    justify-content: start;
+                    margin-left: 10px;">
+                    
+                    <img src="assets/images/back.jpg" style="height: 35px; width: 35px; cursor: pointer" (click)="goBack()">
+
+                    </div>
+                    <div class="col-md-4">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher"
+                       href="https://plus.google.com/+ahmshahnuralam">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                    </div>
+                    <div class="col-md-4"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-3"></div>
+
+	</div>
+</div>

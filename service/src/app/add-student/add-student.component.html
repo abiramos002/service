@@ -1,0 +1,51 @@
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="margin-left: 41%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="color: #6b4604">Add Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="form-group">
+          <label for="usr"><b>Name:</b></label>
+          <input type="text" class="form-control" id="usr" #name>
+        </div>
+
+        <div class="form-group">
+          <label for="usr"><b>Reg.No</b></label>
+          <input type="number" class="form-control" id="usr" #regno>
+        </div>
+
+        <div class="form-group">
+          <label for="usr"><b>Dob</b></label>
+          <input type="date" class="form-control" id="usr" #dob>
+        </div>
+
+        <div class="form-group">
+          <label for="sel1"><b>Department</b></label>
+          <select class="form-control" id="sel1" #sel1>
+            <option>ct</option>
+            <option>ec</option>
+            <option>td</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="usr"><b>Mark</b></label>
+          <input type="number" class="form-control" id="usr" #mark>
+        </div>
+        
+        
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="add(name.value,regno.value,dob.value,sel1.value,mark.value)" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
